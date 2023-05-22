@@ -1,0 +1,43 @@
+pipeline {
+  agent any
+  
+  stages {
+    stage('Build') {
+      steps {
+        sh 'echo "Build stage"'
+        // Add your build steps here
+      }
+    }
+    
+    stage('Test') {
+      steps {
+        sh 'echo "Test stage"'
+        // Add your test steps here
+      }
+    }
+    
+    stage('Deploy') {
+      steps {
+        sh 'echo "Deploy stage"'
+        // Add your deployment steps here
+      }
+    }
+  }
+  
+  post {
+    always {
+      echo 'This will always run'
+      // Add post-build actions here
+    }
+    
+    success {
+      echo 'This will run only if the pipeline is successful'
+      // Add success actions here
+    }
+    
+    failure {
+      echo 'This will run only if the pipeline fails'
+      // Add failure actions here
+    }
+  }
+}
